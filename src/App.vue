@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <Navbar />
-    
+
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Navbar
-  }
-}
+    Navbar,
+  },
+};
 </script>
 
 <style>
@@ -23,7 +23,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;    
+  color: #2c3e50;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -31,6 +31,4 @@ export default {
 a {
   color: #009688;
 }
-
-
 </style>

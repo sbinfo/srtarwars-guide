@@ -15,6 +15,12 @@ const routes = [
     component: () => import('../components/characters/CharactersList')
   },
   {
+    path: '/characters/:userName',
+    name: 'character',
+    component: () => import('../components/characters/CharactersList'),
+    props: true
+  },
+  {
     path: '/planets',
     name: 'Planets',
     component: () => import('../components/planets/PlanetsList')
