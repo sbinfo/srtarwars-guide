@@ -14,10 +14,20 @@ export default new Vuex.Store({
   },
   actions: {
     async getCharacters({ commit }) {
+      const results = [];
       await fetch('https://swapi.dev/api/people/')
         .then(res => res.json())
         .then(data => {
-          commit('SET_CHARACTERS', data.results)
+          let count = 1;
+          data.results.forEach(item => {
+            const personId = item.name.replace(/ /g, '-').toLowerCase();
+            const imgUrl = `https://starwars-visualguide.com/assets/img/characters/${ count++ }.jpg`;
+            const obj = { id: personId, imageUrl: imgUrl, ...item };
+            
+            results.push(obj)
+          });
+          // console.log(results);
+          commit('SET_CHARACTERS', results)
         })
     },
   },

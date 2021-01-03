@@ -2,7 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-sm-8">
-        <CharacterDetails :details="personDetails" />
+        <!-- <CharacterDetails :details="personDetails" /> -->
+        <router-view></router-view>
       </div>
       <div class="col-12 col-sm-4">
         <div class="list-group">
@@ -12,10 +13,9 @@
             :to="{
               name: 'character',
               params: {
-                userName: person.name.replace(/ /g, '-').toLowerCase(),
+                personName: person.name.replace(/ /g, '-').toLowerCase(),
               },
             }"
-            active-class="active"
             class="list-group-item list-group-item-action"
           >
             {{ person.name }}
@@ -45,19 +45,16 @@ export default {
       characters: (state) => {
         return state.people;
       },
-    }),
-    async characterDetails() {
-      return await this.characters;
-    }
+    })
   },
   mounted() {
     this.getCharacters;
   },
-  watch: {
-    $route(to, from) {
-      this.personDetails = from;
-    }
-  }
+  // watch: {
+  //   $route(to, from) {
+  //     this.personDetails = from;
+  //   }
+  // }
 };
 </script>
 

@@ -12,13 +12,15 @@ const routes = [
   {
     path: '/characters',
     name: 'Characters',
-    component: () => import('../components/characters/CharactersList')
-  },
-  {
-    path: '/characters/:userName',
-    name: 'character',
     component: () => import('../components/characters/CharactersList'),
-    props: true
+    children: [
+      {
+        path: ':personName',
+        name: 'character',
+        component: () => import('../components/characters/CharacterDetails'),
+        props: true
+      },
+    ]
   },
   {
     path: '/planets',
@@ -35,7 +37,8 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  linkActiveClass: 'active'
 });
 
 export default router;
