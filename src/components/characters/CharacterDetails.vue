@@ -19,15 +19,12 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 
 export default {
   computed: {
     getCharacter() {
       const allCharacters = this.$store.state.people;
       const routePersonName = this.$route.params.personName;
-
-      console.log(allCharacters)
 
       return allCharacters.find((person) => {
         const personName = person.name.replace(/ /g, "-").toLowerCase();
